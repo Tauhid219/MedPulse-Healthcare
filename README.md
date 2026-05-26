@@ -24,7 +24,7 @@ MedPulse Healthcare is a state-of-the-art, next-generation patient portal and ad
 ---
 
 ## 🛠️ Technology Stack
-- **Backend:** Laravel 11.x (PHP 8.x)
+- **Backend:** Laravel 12.x (PHP 8.x)
 - **Authentication:** Laravel Breeze (Blade Stack)
 - **Frontend Template:** AdminLTE 3.1.0 (Bootstrap 4)
 - **Frontend Utilities:** Tailwind CSS (via Vite), Alpine.js, FontAwesome Icons, Google Fonts (Source Sans Pro, Inter)
