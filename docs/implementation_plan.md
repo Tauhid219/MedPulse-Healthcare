@@ -65,33 +65,33 @@
 
 ---
 
-## Phase 6: সার্ভিস এবং টিম মেম্বার CRUD এডমিন প্যানেল [ ]
-- [ ] **Services Controller & CRUD Views:**
+## Phase 6: সার্ভিস এবং টিম মেম্বার CRUD এডমিন প্যানেল [x]
+- [x] **Services Controller & CRUD Views:**
   - সার্ভিসের তালিকা, নতুন সার্ভিস যোগ, এডিট এবং ডিলিট করার এডমিন ইন্টারফেস।
-- [ ] **Team Members Controller & CRUD Views:**
+- [x] **Team Members Controller & CRUD Views:**
   - টিম মেম্বারদের তালিকা, নতুন মেম্বার যোগ, ছবি আপলোড/ইউআরএল সেট, বায়ো এডিট এবং ডিলিট করার এডমিন ইন্টারফেস。
-- [ ] **Global Settings Controller & View:**
+- [x] **Global Settings Controller & View:**
   - ফ্রন্টএন্ডের হোম পেজের Hero টেক্সট, ফোন নম্বর, ইমেইল ইত্যাদি এডিট করার অপশন।
-- [ ] `docs/development_diary.md` আপডেট করা।
+- [x] `docs/development_diary.md` আপডেট করা।
 
 ---
 
-## Phase 7: ফ্রন্টএন্ড ডাইনামিক ইন্টিগ্রেশন এবং রিয়েল-টাইম ক্লক [ ]
-- [ ] `PageController` আপডেট করে ডাটাবেস থেকে `services`, `team_members` এবং `settings` এর ডাটা ফ্রন্টএন্ড পেজগুলোতে পাস করা।
-- [ ] ফ্রন্টএন্ড পেজগুলোকে ডাইনামিক লুপ ও ভেরিয়েবল দিয়ে রেন্ডার করা:
+## Phase 7: ফ্রন্টএন্ড ডাইনামিক ইন্টিগ্রেশন এবং রিয়েল-টাইম ক্লক [x]
+- [x] `PageController` আপডেট করে ডাটাবেস থেকে `services`, `team_members` এবং `settings` এর ডাটা ফ্রন্টএন্ড পেজগুলোতে পাস করা।
+- [x] ফ্রন্টএন্ড পেজগুলোকে ডাইনামিক লুপ ও ভেরিয়েবল দিয়ে রেন্ডার করা:
   - `home.blade.php` (Hero, Stats, Services Summary)
   - `services.blade.php` (Dynamic list with estimator integration)
   - `about.blade.php` (Dynamic Team Members)
-- [ ] ফুটার পারশিয়াল (`footer.blade.php`)-এ একটি জাভাস্ক্রিপ্ট রিয়েল-টাইম ক্লক (Real-Time System Clock) যুক্ত করা।
-- [ ] `docs/development_diary.md` আপডেট করা।
+- [x] ফুটার পারশিয়াল (`footer.blade.php`)-এ একটি জাভাস্ক্রিপ্ট রিয়েল-টাইম ক্লক (Real-Time System Clock) যুক্ত করা।
+- [x] `docs/development_diary.md` আপডেট করা।
 
 ---
 
-## Phase 8: ভেরিফিকেশন এবং গিট পুশ [ ]
-- [ ] লোকাল এনভায়রনমেন্টে সব ফিচার ভেরিফাই করা (Auth, Form submits, Dashboard charts/stats, CRUD operations)।
-- [ ] ভেরিফিকেশন রিপোর্ট এবং ওয়াকথ্রু ডক্যুমেন্ট আপডেট করা।
-- [ ] গিটহাবে ফাইনাল কোড পুশ করা।
-- [ ] `docs/development_diary.md` এর ফাইনাল আপডেট করা।
+## Phase 8: ভেরিফিকেশন এবং গিট পুশ [x]
+- [x] লোকাল এনভায়রনমেন্টে সব ফিচার ভেরিফাই করা (Auth, Form submits, Dashboard charts/stats, CRUD operations)।
+- [x] ভেরিফিকেশন রিপোর্ট এবং ওয়াকথ্রু ডক্যুমেন্ট আপডেট করা।
+- [x] গিটহাবে ফাইনাল কোড পুশ করা।
+- [x] `docs/development_diary.md` এর ফাইনাল আপডেট করা।
 
 ---
 
