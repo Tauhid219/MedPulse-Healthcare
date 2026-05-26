@@ -7,7 +7,7 @@
   <title>@yield('title', 'MedPulse | Admin Panel')</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+  <link rel="icon" type="image/png" href="{{ asset('heart-rate-favicon.png') }}">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">

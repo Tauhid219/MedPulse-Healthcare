@@ -133,11 +133,11 @@
 ---
 
 ### ২৬ মে, ২০২৬ (মঙ্গলবার - গভীর রাত)
-#### কাজ: ফেভিকন (Favicon) ইমেজ জেনারেশন এবং লেআউট ইন্টিগ্রেশন
+#### কাজ: ফেভিকন (Favicon) ইন্টিগ্রেশন
 
-প্রজেক্টের ভিজ্যুয়াল ব্র্যান্ডিং আরও উন্নত করার জন্য ফেভিকন ডিজাইন ও যুক্ত করা হয়েছে:
-1. **ফেভিকন ইমেজ জেনারেশন:** ব্যবহারকারীর নির্দেশিত ডিজাইন অনুযায়ী একটি কাস্টম নীল রঙের গোল-কোণা ব্যাকগ্রাউন্ডের উপর সাদা রঙের হার্ট-পালস (EKG) মেডিকেল সিম্বল সহ একটি ফেভিকন ইমেজ তৈরি করে `public/favicon.png` হিসেবে সংরক্ষণ করা হয়েছে।
-2. **লেআউটে লিংক যুক্তকরণ:** প্রজেক্টের তিনটি প্রধান লেআউট ফাইলে ফেভিকন লিংক যুক্ত করা হয়েছে:
+প্রজেক্টের ভিজ্যুয়াল ব্র্যান্ডিং আরও উন্নত করার জন্য ফেভিকন লিংক যুক্ত করা হয়েছে:
+1. **ফেভিকন ফাইল নির্ধারণ:** প্রজেক্টের পাবলিক ফোল্ডারে থাকা চিকিৎসাসংক্রান্ত [heart-rate-favicon.png](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/public/heart-rate-favicon.png) ইমেজটি ফেভিকন হিসেবে ব্যবহারের জন্য নির্ধারণ করা হয়েছে।
+2. **লেআউটে লিংক যুক্তকরণ:** প্রজেক্টের তিনটি প্রধান লেআউট ফাইলে ফেভিকন লিংক আপডেট করা হয়েছে:
    - [app.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/layouts/app.blade.php) (পাবলিক ফ্রন্টএন্ড লেআউট)
    - [admin.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/layouts/admin.blade.php) (এডমিন ড্যাশবোর্ড লেআউট)
    - [admin-auth.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/layouts/admin-auth.blade.php) (এডমিন অথেনটিকেশন লেআউট)
