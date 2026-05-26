@@ -37,26 +37,43 @@
         <div>
             © {{ date('Y') }} MedPulse Inc. All digital distribution operations optimized securely.
         </div>
-        <div class="flex items-center gap-2 bg-slate-800 px-3.5 py-1.5 rounded-full border border-slate-700 text-slate-300">
+        <div class="flex flex-wrap items-center gap-2 bg-slate-800 px-3.5 py-1.5 rounded-full border border-slate-700 text-slate-300 justify-center">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <i class="fa-regular fa-clock text-xs text-slate-400 mr-0.5"></i>
-            <span class="font-mono text-xs" id="footer-live-clock">Loading system time...</span>
+            <i class="fa-regular fa-calendar text-xs text-slate-400"></i>
+            <span class="font-mono text-xs" id="footer-live-date">Loading date...</span>
+            <span class="text-slate-600 px-0.5">|</span>
+            <i class="fa-regular fa-clock text-xs text-slate-400"></i>
+            <span class="font-mono text-xs" id="footer-live-clock">Loading time...</span>
         </div>
     </div>
 </footer>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        const dateElement = document.getElementById('footer-live-date');
         const clockElement = document.getElementById('footer-live-clock');
-        if (clockElement) {
+        
+        if (clockElement && dateElement) {
             function updateClock() {
                 const now = new Date();
+                
+                // Format Date: e.g. Wed, May 27, 2026
+                const dateString = now.toLocaleDateString(undefined, {
+                    weekday: 'short',
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+                
+                // Format Time: e.g. 11:55:37 PM
                 const timeString = now.toLocaleTimeString(undefined, {
                     hour: '2-digit',
                     minute: '2-digit',
                     second: '2-digit',
                     hour12: true
                 });
+                
+                dateElement.textContent = dateString;
                 clockElement.textContent = timeString;
             }
             updateClock();

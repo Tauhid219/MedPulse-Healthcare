@@ -20,13 +20,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Seed default admin user
-        User::updateOrCreate(
-            ['email' => 'admin@medpulse.com'],
-            [
-                'name' => 'Admin User',
-                'password' => Hash::make('password123'),
-            ]
-        );
+        $this->call(AdminUserSeeder::class);
 
         // Seed settings
         $settings = [

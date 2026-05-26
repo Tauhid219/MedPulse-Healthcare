@@ -1,59 +1,102 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# MedPulse Healthcare - Digitized & Simplified Health Ecosystem
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+MedPulse Healthcare is a state-of-the-art, next-generation patient portal and administrative dashboard application. It is designed to bridge the gap between patient physiological vitals tracking, clinical specialist diagnostics, and secure clinical communication pipelines.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Key Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 💻 Frontend Patient Portal
+- **Real-Time Vitals Tracking:** Visual dashboard displaying heart rate, blood pressure, glucose levels, and sleep analysis.
+- **Specialized Medical Services:** Interactive specialty tabs showing diagnostic information, duration/SLAs, and patient co-pay ratios.
+- **Out-of-Pocket Expense Estimator:** An interactive Alpine.js-powered tool that automatically calculates custom co-pay metrics based on database prices.
+- **Secure Message Dispatch:** Department-routed patient triage intake forms with CSRF tokens and validated input layers.
+- **Live System Clock & Date:** Ticking footer clock displaying the current system date and time in real-time.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🛡️ AdminLTE Dashboard Panel
+- **Breeze Auth Integration:** Secure admin authentication restyled with clean AdminLTE-3.1.0 sign-in and recovery boxes.
+- **Summary Vitals Panel:** System-wide counters displaying total messages, active medical services, and doctor profiles.
+- **Department Triage Inbox:** Inbox reader showing message payloads, marking them as read, and deleting them.
+- **Services CRUD Manager:** Full administrative management to list, create, edit, or delete institutional services.
+- **Clinical Staff CRUD Manager:** Administrative panel to create, update, and manage doctor profile details, designations, and ordering indexes.
+- **Global Settings Panel:** Admin panel allowing managers to update landing page hero titles, subtitles, patient plan details, and hotline parameters.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 🛠️ Technology Stack
+- **Backend:** Laravel 11.x (PHP 8.x)
+- **Authentication:** Laravel Breeze (Blade Stack)
+- **Frontend Template:** AdminLTE 3.1.0 (Bootstrap 4)
+- **Frontend Utilities:** Tailwind CSS (via Vite), Alpine.js, FontAwesome Icons, Google Fonts (Source Sans Pro, Inter)
+- **Database:** MySQL
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## ⚙️ Installation & Local Setup
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 1. Prerequisite Checklist
+Ensure your local server is running **PHP >= 8.2**, **Composer**, **NodeJS**, and a **MySQL** server (e.g., via XAMPP).
 
-### Premium Partners
+### 2. Setup Database
+Create a MySQL database named `medpulse_healthcare` on your local server.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 3. Clone & Configure Application
+Open your terminal in the project directory:
 
-## Contributing
+```bash
+# 1. Install Composer dependencies
+composer install
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# 2. Duplicate env configuration file
+copy .env.example .env
 
-## Code of Conduct
+# 3. Generate application encryption key
+php artisan key:generate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Configure your `.env` file database connection parameters:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=medpulse_healthcare
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-## Security Vulnerabilities
+### 4. Run Migrations & Seeders
+Seed default services, doctor leadership board profiles, global homepage settings, and the default admin user:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+php artisan migrate --seed
+```
 
-## License
+### 5. Build Assets
+Install node dependencies and compile stylesheets/scripts:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+npm install
+npm run build
+```
+
+### 6. Start Development Server
+```bash
+php artisan serve
+```
+Open [http://localhost:8000](http://localhost:8000) in your browser.
+
+---
+
+## 🔑 Default Admin Credentials
+To access the Admin LTE Dashboard at `/admin/dashboard`, log in using:
+
+* **Email:** `admin@medpulse.com`
+* **Password:** `password123`
+
+---
+
+## 📁 Documentation Links
+Explore detailed engineering plans and project updates in the `docs` folder:
+- 📖 [Implementation Plan](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/docs/implementation_plan.md)
+- 📝 [Development Diary](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/docs/development_diary.md)
+- 🧪 [Blade Templating Walkthrough](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/docs/walkthrough.md)
