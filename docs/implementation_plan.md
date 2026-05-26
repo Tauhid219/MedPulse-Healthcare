@@ -9,40 +9,40 @@
 
 ---
 
-## Phase 1: গিট ও গিটহাব ইনিশিয়ালাইজেশন এবং পুশ [ ]
-- [ ] গিট রিপোজিটরি কনফিগারেশন চেক করা।
-- [ ] গিটহাব রিমোট রিপোজিটরি (`https://github.com/Tauhid219/MedPulse-Healthcare`) যুক্ত করা।
-- [ ] বর্তমান কোডবেস গিটহাবে প্রথম পুশ (Initial Push) করা।
-- [ ] `docs/development_diary.md` আপডেট করা।
+## Phase 1: গিট ও গিটহাব ইনিশিয়ালাইজেশন এবং পুশ [x]
+- [x] গিট রিপোজিটরি কনফিগারেশন চেক করা।
+- [x] গিটহাব রিমোট রিপোজিটরি (`https://github.com/Tauhid219/MedPulse-Healthcare`) যুক্ত করা।
+- [x] বর্তমান কোডবেস গিটহাবে প্রথম পুশ (Initial Push) করা।
+- [x] `docs/development_diary.md` আপডেট করা।
 
 ---
 
-## Phase 2: ডাটাবেস ডিজাইন এবং মাইগ্রেশন [ ]
-- [ ] **Contact Messages Table (`contact_messages`):**
+## Phase 2: ডাটাবেস ডিজাইন এবং মাইগ্রেশন [x]
+- [x] **Contact Messages Table (`contact_messages`):**
   - Fields: `id`, `name`, `health_id`, `routing_target`, `message`, `status` (unread/read), `created_at`, `updated_at`.
-- [ ] **Services Table (`services`):**
+- [x] **Services Table (`services`):**
   - Fields: `id`, `title`, `description`, `icon`, `category`, `price_estimate`, `co_pay_ratio`, `created_at`, `updated_at`.
-- [ ] **Team Members Table (`team_members`):**
+- [x] **Team Members Table (`team_members`):**
   - Fields: `id`, `name`, `role`, `department`, `bio`, `image_url`, `order_index`, `created_at`, `updated_at`.
-- [ ] **Settings Table (`settings`):**
+- [x] **Settings Table (`settings`):**
   - Fields: `id`, `key` (unique), `value` (text), `created_at`, `updated_at` (যেমন: hero_title, hero_subtitle, hospital_phone, hospital_email ইত্যাদি)।
-- [ ] **Database Seeder:**
+- [x] **Database Seeder:**
   - ফ্রন্টএন্ডে বর্তমানে থাকা সকল স্ট্যাটিক ডাটা (Services, Team Members, এবং Hero Section, Stats, contact details এর মত সেটিংস) সংগ্রহ করে Laravel Seeders তৈরি করা। এর ফলে সিড করার সাথে সাথে পুরো সাইটটি আগের মতোই সব স্ট্যাটিক ডাটা সহ সচল থাকবে, কিন্তু ডাটা আসবে ডাটাবেস থেকে।
-- [ ] ডাটাবেস মাইগ্রেশন ও সিডিং রান করে লোকাল ডাটাবেস প্রিপেয়ার করা।
-- [ ] `docs/development_diary.md` আপডেট করা।
+- [x] ডাটাবেস মাইগ্রেশন ও সিডিং রান করে লোকাল ডাটাবেস প্রিপেয়ার করা।
+- [x] `docs/development_diary.md` আপডেট করা।
 
 ---
 
-## Phase 3: লারাভেল ব্রিজ ইন্সটলেশন এবং এডমিনএলটিই অথ স্টাইলিং [ ]
-- [ ] লারাভেল ব্রিজ (`laravel/breeze`) কম্পোজার প্যাকেজ ইন্সটল করা।
-- [ ] ব্লেড স্ট্যাকের জন্য Breeze ইন্সটলেশন রান করা (`php artisan breeze:install blade`)।
-- [ ] AdminLTE static assets (`dist` এবং `plugins` ফোল্ডার) লারাভেলের `public/adminlte` ডিরেক্টরিতে কপি করা।
-- [ ] Breeze-এর ডিফল্ট অথ ভিউগুলো পরিবর্তন করে `AdminLTE-3.1.0` স্টাইল অনুসারে আপডেট করা:
+## Phase 3: লারাভেল ব্রিজ ইন্সটলেশন এবং এডমিনএলটিই অথ স্টাইলিং [x]
+- [x] লারাভেল ব্রিজ (`laravel/breeze`) কম্পোজার প্যাকেজ ইন্সটল করা।
+- [x] ব্লেড স্ট্যাকের জন্য Breeze ইন্সটলেশন রান করা (`php artisan breeze:install blade`)।
+- [x] AdminLTE static assets (`dist` এবং `plugins` ফোল্ডার) লারাভেলের `public/adminlte` ডিরেক্টরিতে কপি করা।
+- [x] Breeze-এর ডিফল্ট অথ ভিউগুলো পরিবর্তন করে `AdminLTE-3.1.0` স্টাইল অনুসারে আপডেট করা:
   - `login.blade.php` -> AdminLTE login box ডিজাইন।
   - `register.blade.php` -> AdminLTE register box ডিজাইন।
   - `forgot-password.blade.php` -> AdminLTE forgot password ডিজাইন।
-  - `reset-password.blade.php` -> AdminLTE recover password ডিজাইন。
-- [ ] `docs/development_diary.md` আপডেট করা。
+  - `reset-password.blade.php` -> AdminLTE recover password ডিজাইন।
+- [x] `docs/development_diary.md` আপডেট করা।
 
 ---
 
