@@ -142,5 +142,18 @@
    - [admin.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/layouts/admin.blade.php) (এডমিন ড্যাশবোর্ড লেআউট)
    - [admin-auth.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/layouts/admin-auth.blade.php) (এডমিন অথেনটিকেশন লেআউট)
 
+---
 
+### ২৭ মে, ২০২৬ (বুধবার)
+#### কাজ: এডমিন প্রোফাইল সেটিংস, ইউজার CRUD এবং নেভিগেশন ইন্টিগ্রেশন
 
+ব্যবহারকারীর রিকোয়েস্ট অনুযায়ী প্রোফাইল সেটিংস রূপান্তর, পাবলিক রেজিস্ট্রেশন বন্ধকরণ এবং এডমিন ইউজার ড্যাশবোর্ড তৈরির কাজ সম্পন্ন করা হয়েছে:
+1. **রেজিস্ট্রেশন সম্পূর্ণ নিষ্ক্রিয়করণ:** পাবলিক রেজিস্ট্রেশন রাউটগুলো (`routes/auth.php`) কমেন্ট করে বন্ধ করা হয়েছে। নতুন কোনো এডমিন ইউজার বানাতে হলে এডমিন প্যানেল থেকেই তৈরি করতে হবে।
+2. **এডমিন প্যানেলে ইউজার CRUD ড্যাশবোর্ড:** এডমিন প্যানেলের জন্য [UserController.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/app/Http/Controllers/Admin/UserController.php) তৈরি করা হয়েছে এবং [index.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/admin/users/index.blade.php), [create.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/admin/users/create.blade.php), এবং [edit.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/admin/users/edit.blade.php) ভিউগুলো AdminLTE ও বুটস্ট্র্যাপ স্টাইল দিয়ে ডিজাইন করা হয়েছে।
+3. **লগইন করা ইউজার প্রোটেকশন:** কোনো এডমিন যাতে অসাবধানতাবশত নিজের ইউজার অ্যাকাউন্ট লিস্ট থেকে ডিলিট না করে ফেলতে পারেন, সেজন্য সেলফ-ডিলিট প্রতিরোধ ব্যবস্থা যুক্ত করা হয়েছে।
+4. **AdminLTE প্রোফাইল ম্যানেজমেন্ট রূপান্তর:** Breeze-এর ডিফল্ট প্রোফাইল পেজ [edit.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/profile/edit.blade.php) ফাইলটি AdminLTE থিমের ৩টি পৃথক বুটস্ট্র্যাপ কার্ডে রূপান্তর করা হয়েছে:
+   - প্রোফাইল ডিটেইলস পরিবর্তন (নাম এবং ইমেইল)।
+   - পাসওয়ার্ড পরিবর্তন।
+   - পাসওয়ার্ড ভেরিফিকেশন পপ-আপ মোডাল সহ অ্যাকাউন্ট পার্মানেন্টলি ডিলিট করার ব্যবস্থা।
+5. **নেভিগেশন ও শর্টকাট লিংক ইন্টিগ্রেশন:** [admin.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/layouts/admin.blade.php) লেআউট ফাইলের সাইডবার এবং টপ-রাইট ইউজার ড্রপডাউনে "Admin Users" এবং "My Profile" পেজের সঠিক লিংক বসানো হয়েছে।
+6. **বুটস্ট্র্যাপ পেজিনেশন সচলকরণ:** লারাভেলের পেজিনেটরকে ডিফল্ট টেইলউইন্ডের বদলে বুটস্ট্র্যাপ ৪-এ কনভার্ট করতে [AppServiceProvider.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/app/Providers/AppServiceProvider.php) এ `Paginator::useBootstrapFour()` লোড করা হয়েছে।

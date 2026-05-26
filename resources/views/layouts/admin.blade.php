@@ -44,6 +44,10 @@
           <span>{{ Auth::user()->name }}</span>
         </a>
         <div class="dropdown-menu dropdown-menu-right">
+          <a href="{{ route('profile.edit') }}" class="dropdown-item">
+            <i class="fas fa-user-cog mr-2"></i> Profile Settings
+          </a>
+          <div class="dropdown-divider"></div>
           <form method="POST" action="{{ route('logout') }}">
             @csrf
             <button type="submit" class="dropdown-item text-danger">
@@ -96,6 +100,18 @@
             <a href="{{ route('admin.settings.index') }}" class="nav-link {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-cogs"></i>
               <p>Global Settings</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.users.index') }}" class="nav-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-users"></i>
+              <p>Admin Users</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('profile.edit') }}" class="nav-link {{ request()->routeIs('profile.edit') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-user-cog"></i>
+              <p>My Profile</p>
             </a>
           </li>
         </ul>
