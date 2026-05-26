@@ -46,13 +46,13 @@
 
 ---
 
-## Phase 4: এডমিন লেআউট এবং ড্যাশবোর্ড তৈরি [ ]
-- [ ] AdminLTE-এর `starter.html` ডিজাইনকে কেন্দ্র করে `resources/views/layouts/admin.blade.php` লেআউট তৈরি করা।
-- [ ] ড্যাশবোর্ড ভিউ (`resources/views/admin/dashboard.blade.php`) তৈরি করা:
+## Phase 4: এডমিন লেআউট এবং ড্যাশবোর্ড তৈরি [x]
+- [x] AdminLTE-এর `starter.html` ডিজাইনকে কেন্দ্র করে `resources/views/layouts/admin.blade.php` লেআউট তৈরি করা।
+- [x] ড্যাশবোর্ড ভিউ (`resources/views/admin/dashboard.blade.php`) তৈরি করা:
   - গুরুত্বপূর্ণ স্ট্যাটিস্টিক্স কার্ডস (Total Messages, Active Services, Total Team Members)।
   - রিসেন্ট মেসেজ এবং সিস্টেম লগ স্ট্যাটাস।
-- [ ] এডমিন রাউট গ্রুপ ও মিডলওয়্যার (`auth`, `verified`) কনফিগার করা।
-- [ ] `docs/development_diary.md` আপডেট করা।
+- [x] এডমিন রাউট গ্রুপ ও মিডলওয়্যার (`auth`, `verified`) কনফিগার করা।
+- [x] `docs/development_diary.md` আপডেট করা।
 
 ---
 
