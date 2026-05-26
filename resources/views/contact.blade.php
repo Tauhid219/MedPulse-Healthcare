@@ -53,30 +53,49 @@
             <!-- Centralized High-Fidelity Intake Form -->
             <div class="lg:col-span-2 bg-white p-6 sm:p-8 rounded-3xl border border-slate-100 shadow-sm space-y-4">
                 <h3 class="text-xl font-bold text-slate-900">Secure Message Dispatch</h3>
-                <form class="grid sm:grid-cols-2 gap-4 text-xs font-medium text-slate-600">
+                
+                @if(session('success'))
+                    <div class="bg-emerald-50 text-emerald-800 p-4 rounded-2xl border border-emerald-100 text-xs font-semibold">
+                        <i class="fa-solid fa-circle-check mr-1.5 text-emerald-600"></i> {{ session('success') }}
+                    </div>
+                @endif
+
+                @if($errors->any())
+                    <div class="bg-rose-50 text-rose-800 p-4 rounded-2xl border border-rose-100 text-xs font-semibold">
+                        <i class="fa-solid fa-circle-exclamation mr-1.5 text-rose-600"></i> Please resolve the errors below:
+                        <ul class="list-disc pl-4 mt-1.5 space-y-1">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form method="POST" action="{{ route('contact.store') }}" class="grid sm:grid-cols-2 gap-4 text-xs font-medium text-slate-600">
+                    @csrf
                     <div class="space-y-1">
                         <label class="block font-semibold text-slate-500">FULL NAME</label>
-                        <input type="text" placeholder="Alex Morgan"
+                        <input type="text" name="name" placeholder="Alex Morgan" value="{{ old('name') }}" required
                             class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-blue-500 text-slate-800">
                     </div>
                     <div class="space-y-1">
                         <label class="block font-semibold text-slate-500">HEALTH ID PORTAL NUMBER</label>
-                        <input type="text" placeholder="#MP-9842"
+                        <input type="text" name="health_id" placeholder="#MP-9842" value="{{ old('health_id') }}"
                             class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-blue-500 text-slate-800">
                     </div>
                     <div class="sm:col-span-2 space-y-1">
                         <label class="block font-semibold text-slate-500">ROUTING ROUTE TARGET</label>
-                        <select
+                        <select name="routing_target" required
                             class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-blue-500 text-slate-800">
-                            <option>General Support & Profile Corrections</option>
-                            <option>Clinical Telehealth Escalations</option>
-                            <option>Claims, Billing & Deductibles</option>
+                            <option value="General Support & Profile Corrections" {{ old('routing_target') === 'General Support & Profile Corrections' ? 'selected' : '' }}>General Support & Profile Corrections</option>
+                            <option value="Clinical Telehealth Escalations" {{ old('routing_target') === 'Clinical Telehealth Escalations' ? 'selected' : '' }}>Clinical Telehealth Escalations</option>
+                            <option value="Claims, Billing & Deductibles" {{ old('routing_target') === 'Claims, Billing & Deductibles' ? 'selected' : '' }}>Claims, Billing & Deductibles</option>
                         </select>
                     </div>
                     <div class="sm:col-span-2 space-y-1">
                         <label class="block font-semibold text-slate-500">ENCRYPTED MESSAGE CONTENT</label>
-                        <textarea rows="4" placeholder="Detail your exact system problem scenario here..."
-                            class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-blue-500 text-slate-800"></textarea>
+                        <textarea name="message" rows="4" placeholder="Detail your exact system problem scenario here..." required
+                            class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-blue-500 text-slate-800">{{ old('message') }}</textarea>
                     </div>
                     <div class="sm:col-span-2 pt-2">
                         <button type="submit"

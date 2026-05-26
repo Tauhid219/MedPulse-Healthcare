@@ -78,3 +78,15 @@
 3. **ড্যাশবোর্ড কন্ট্রোলার:** `DashboardController` তৈরি করে ডাটাবেস থেকে রিয়েল-টাইম তথ্য ও মেসেজ সংগ্রহ করে ড্যাশবোর্ডে পাস করা হয়েছে।
 4. **রাউট ও রিডাইরেকশন:** `routes/web.php` ফাইলে এডমিন রাউট গ্রুপ ও মিডলওয়্যার ডিফাইন করা হয়েছে এবং Breeze-এর ডিফল্ট `/dashboard` রাউটকে `/admin/dashboard` এ রিডাইরেক্ট করা হয়েছে যাতে সফল লগইনের পর ইউজার সরাসরি এডমিন ড্যাশবোর্ডে প্রবেশ করতে পারেন।
 5. **অন্যান্য এডমিন কন্ট্রোলার:** এডমিন রাউট লোড হওয়ার সুবিধার জন্য `MessageController`, `ServiceController`, `TeamMemberController`, এবং `SettingController` এর স্ট্রাকচারাল কন্ট্রোলার ফাইলগুলো তৈরি করা হয়েছে।
+
+---
+
+### ২৬ মে, ২০২৬ (মঙ্গলবার - গভীর রাত)
+#### কাজ: ডাইনামিক কন্টাক্ট মেসেজ এবং এডমিন ট্রায়াজ ম্যানেজমেন্ট (Phase 5)
+
+আজ প্রজেক্টের কন্টাক্ট ফর্মটিকে ডাটাবেসের সাথে সংযুক্ত করে ডায়নামিক করা হয়েছে এবং এডমিন প্যানেলে মেসেজ ম্যানেজমেন্ট ফিচার যুক্ত করা হয়েছে। কাজের বিবরণ:
+1. **ফ্রন্টএন্ড কন্টাক্ট ফর্ম আপডেট:** [contact.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/contact.blade.php) ফাইলে মেসেজ পাঠানোর ফর্মটিতে `@csrf` টোকেন, সঠিক মেথড (`POST`), রুট অ্যাকশন (`contact.store`), এবং ইনপুট ফিল্ডগুলোতে `name` অ্যাট্রিবিউট যোগ করা হয়েছে। এছাড়াও সফল সাবমিশন মেসেজ এবং ভ্যালিডেশন এরর প্রদর্শনের অ্যালার্ট বক্স বসানো হয়েছে।
+2. **কন্টাক্ট সাবমিশন কন্ট্রোলার লজিক:** [PageController.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/app/Http/Controllers/PageController.php) ফাইলে `storeMessage` মেথড যোগ করে মেসেজের ডাটা ভ্যালিডেশন এবং `ContactMessage` মডেলে স্টোর করার কাজ সম্পন্ন করা হয়েছে।
+3. **এডমিন মেসেজ লিস্ট ভিউ:** [index.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/admin/messages/index.blade.php) তৈরি করা হয়েছে, যেখানে সমস্ত ট্রায়াজ মেসেজের লিস্ট (নাম, আইডি, টার্গেট, স্ট্যাটাস) দেখা যায়, মার্ক এজ রিড করা যায় এবং মেসেজ ডিলিট করা যায়।
+4. **মেসেজ ডিটেইলস ভিউ:** [show.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/admin/messages/show.blade.php) তৈরি করা হয়েছে যা AdminLTE এর mailbox রিডার স্টাইলে যেকোনো মেসেজের সম্পূর্ণ তথ্য সুন্দরভাবে প্রদর্শন করে।
+5. **মেসেজ কন্ট্রোলার আপডেট:** [MessageController.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/app/Http/Controllers/Admin/MessageController.php) ফাইলে মেসেজ দেখার সময় তা রিড স্ট্যাটাসে কনভার্ট করা, ম্যানুয়ালি রিড মার্ক করা এবং ডাটাবেস থেকে ডিলিট করার অ্যাকশন লজিকগুলো সম্পন্ন করা হয়েছে।
