@@ -10,22 +10,39 @@ class PageController extends Controller
 {
     public function home()
     {
-        return view('home');
+        $settings = \App\Models\Setting::all()->pluck('value', 'key');
+        
+        $primaryCareService = \App\Models\Service::where('title', 'like', '%Genomic%')
+            ->orWhere('category', 'diagnostics')
+            ->first();
+        $cardioService = \App\Models\Service::where('title', 'like', '%Echocardiography%')
+            ->orWhere('category', 'cardiovascular')
+            ->first();
+        $neuroService = \App\Models\Service::where('title', 'like', '%EEG%')
+            ->orWhere('category', 'neurology')
+            ->first();
+
+        $doctors = \App\Models\TeamMember::orderBy('order_index')->take(2)->get();
+
+        return view('home', compact('settings', 'primaryCareService', 'cardioService', 'neuroService', 'doctors'));
     }
 
     public function services()
     {
-        return view('services');
+        $services = \App\Models\Service::all();
+        return view('services', compact('services'));
     }
 
     public function about()
     {
-        return view('about');
+        $teamMembers = \App\Models\TeamMember::orderBy('order_index')->get();
+        return view('about', compact('teamMembers'));
     }
 
     public function contact()
     {
-        return view('contact');
+        $settings = \App\Models\Setting::all()->pluck('value', 'key');
+        return view('contact', compact('settings'));
     }
 
     public function storeMessage(Request $request)

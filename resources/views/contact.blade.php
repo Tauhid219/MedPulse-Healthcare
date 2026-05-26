@@ -30,7 +30,7 @@
                             <span
                                 class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">Institutional
                                 Hotline</span>
-                            <span class="text-sm font-bold text-slate-900 block mt-0.5">+1 (800) 555-4200</span>
+                            <span class="text-sm font-bold text-slate-900 block mt-0.5">{{ $settings['hospital_phone'] ?? '+1 (800) 555-4200' }}</span>
                             <span class="text-[11px] text-emerald-600 block"><i
                                     class="fa-solid fa-circle text-[6px] mr-1 inline-block align-middle"></i> Operators
                                 Live</span>
@@ -43,7 +43,7 @@
                         <div>
                             <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">Secure
                                 Intake Email</span>
-                            <span class="text-sm font-bold text-slate-900 block mt-0.5">triage@medpulse.com</span>
+                            <span class="text-sm font-bold text-slate-900 block mt-0.5">{{ $settings['hospital_email'] ?? 'triage@medpulse.com' }}</span>
                             <span class="text-[11px] text-slate-400 block">Avg Response: Under 1 Hour</span>
                         </div>
                     </div>

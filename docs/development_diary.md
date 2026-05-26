@@ -90,3 +90,33 @@
 3. **এডমিন মেসেজ লিস্ট ভিউ:** [index.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/admin/messages/index.blade.php) তৈরি করা হয়েছে, যেখানে সমস্ত ট্রায়াজ মেসেজের লিস্ট (নাম, আইডি, টার্গেট, স্ট্যাটাস) দেখা যায়, মার্ক এজ রিড করা যায় এবং মেসেজ ডিলিট করা যায়।
 4. **মেসেজ ডিটেইলস ভিউ:** [show.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/admin/messages/show.blade.php) তৈরি করা হয়েছে যা AdminLTE এর mailbox রিডার স্টাইলে যেকোনো মেসেজের সম্পূর্ণ তথ্য সুন্দরভাবে প্রদর্শন করে।
 5. **মেসেজ কন্ট্রোলার আপডেট:** [MessageController.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/app/Http/Controllers/Admin/MessageController.php) ফাইলে মেসেজ দেখার সময় তা রিড স্ট্যাটাসে কনভার্ট করা, ম্যানুয়ালি রিড মার্ক করা এবং ডাটাবেস থেকে ডিলিট করার অ্যাকশন লজিকগুলো সম্পন্ন করা হয়েছে।
+
+---
+
+### ২৬ মে, ২০২৬ (মঙ্গলবার - গভীর রাত)
+#### কাজ: সার্ভিস, টিম মেম্বার CRUD এবং সেটিংস পেজ তৈরি (Phase 6)
+
+আজ এডমিন প্যানেলের সার্ভিস, টিম মেম্বার এবং গ্লোবাল সেটিংস আপডেট করার পেজগুলোর জন্য সম্পূর্ণ ইন্টারফেস তৈরি করা হয়েছে:
+1. **সার্ভিস CRUD ভিউ সমূহ:**
+   - [index.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/admin/services/index.blade.php): সমস্ত সার্ভিসের বিবরণ, দাম, কো-পে রেশিও এবং ডুরেশনের টেবিল ভিউ।
+   - [create.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/admin/services/create.blade.php): নতুন সার্ভিস অ্যাড করার ফর্ম উইথ সঠিক ভ্যালিডেশন শোয়িং।
+   - [edit.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/admin/services/edit.blade.php): বর্তমান সার্ভিসগুলো এডিট এবং আপডেট করার ব্যবস্থা।
+2. **টিম মেম্বার CRUD ভিউ সমূহ:**
+   - [index.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/admin/team/index.blade.php): চিকিৎসকদের তালিকা, ছবি, পজিশন এবং সর্ট অর্ডার ইনডেক্স সহ ভিউ।
+   - [create.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/admin/team/create.blade.php): নতুন টিম মেম্বার বা ডক্টর যুক্ত করার ফর্ম।
+   - [edit.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/admin/team/edit.blade.php): ডক্টরের প্রোফাইল আপডেট বা পরিবর্তনের ফর্ম।
+3. **গ্লোবাল সেটিংস ভিউ:**
+   - [index.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/admin/settings/index.blade.php): হোম পেজের টেক্সটসমূহ, হসপিটালের ফোন নম্বর ও ইমেইল এবং পেশেন্ট কার্ডের মেম্বারশিপ রিয়েল-টাইম ডাটা আপডেট করার ফর্ম ইন্টারফেস।
+
+---
+
+### ২৬ মে, ২০২৬ (মঙ্গলবার - গভীর রাত)
+#### কাজ: ফ্রন্টএন্ড ডাইনামিক ইন্টিগ্রেশন এবং রিয়েল-টাইম ক্লক (Phase 7)
+
+আজ ফ্রন্টএন্ডের সমস্ত স্ট্যাটিক ডাটাকে ডাটাবেসের ডাটা ও সেটিংসের সাথে সিঙ্ক করা হয়েছে এবং ফুটার ডাইনামিক করা হয়েছে:
+1. **PageController আপডেট:** [PageController.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/app/Http/Controllers/PageController.php) এর `home`, `services`, `about` এবং `contact` অ্যাকশনগুলোতে ডাটাবেসের `Setting`, `Service` ও `TeamMember` মডেল থেকে রিয়েল-টাইম তথ্য কুয়েরি করে ব্লেড ফাইলে পাস করা হয়েছে।
+2. **হোমপেজ ইন্টিগ্রেশন:** [home.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/home.blade.php) এ হিরো সেকশন টেক্সট, ডক্টরস অনলাইন স্ট্যাটাস, এবং পেশেন্ট পোর্টাল মেম্বারশিপ কার্ডের ভ্যালুগুলো গ্লোবাল সেটিংস থেকে ডাইনামিকালি নিয়ে আসা হয়েছে। এছাড়া উপলব্ধ স্পেশালিস্টদের ডাটাবেসের টিম মেম্বারদের তথ্য লুপ দিয়ে রেন্ডার করা হয়েছে।
+3. **সার্ভিস ও কস্ট ক্যালকুলেটর ডাইনামিককরণ:** [services.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/services.blade.php) পেজে ডাটাবেসের সব সার্ভিস ও ক্যাটাগরি ক্যাবলিং করে শো করা হয়েছে এবং ওপিডি কস্ট ক্যালকুলেটর টুলের প্রাইজ ডাটাবেসের প্রাইস ভ্যালুর সাথে ডাইনামিকালি বাইন্ড করা হয়েছে।
+4. **পরিচিতি ও টিম বোর্ড আপডেট:** [about.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/about.blade.php) এ লিডারশিপ বোর্ডের ডক্টর প্রোফাইলগুলো ডাটাবেসের টিম মেম্বারদের তথ্য দিয়ে সর্ট অর্ডার অনুযায়ী রেন্ডার করা হয়েছে।
+5. **ফুটার রিয়েল-টাইম ডিজিটাল ক্লক:** [footer.blade.php](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/resources/views/partials/footer.blade.php) এ জাভাস্ক্রিপ্টের `setInterval` ও `toLocaleTimeString` ব্যবহার করে একটি সেকেন্ড-বাই-সেকেন্ড চলমান রিয়েল-টাইম সিস্টেম ঘড়ি যুক্ত করা হয়েছে।
+

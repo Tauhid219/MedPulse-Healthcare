@@ -33,7 +33,34 @@
             </div>
         </div>
     </div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 border-t border-slate-800 text-center text-slate-500">
-        © {{ date('Y') }} MedPulse Inc. All digital distribution operations optimized securely.
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-slate-500">
+        <div>
+            © {{ date('Y') }} MedPulse Inc. All digital distribution operations optimized securely.
+        </div>
+        <div class="flex items-center gap-2 bg-slate-800 px-3.5 py-1.5 rounded-full border border-slate-700 text-slate-300">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <i class="fa-regular fa-clock text-xs text-slate-400 mr-0.5"></i>
+            <span class="font-mono text-xs" id="footer-live-clock">Loading system time...</span>
+        </div>
     </div>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const clockElement = document.getElementById('footer-live-clock');
+        if (clockElement) {
+            function updateClock() {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString(undefined, {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: true
+                });
+                clockElement.textContent = timeString;
+            }
+            updateClock();
+            setInterval(updateClock, 1000);
+        }
+    });
+</script>

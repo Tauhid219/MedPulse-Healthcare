@@ -10,14 +10,13 @@
                 <span
                     class="inline-flex items-center gap-1.5 py-1 px-3 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
                     <span class="w-1.5 h-1.5 inline-block bg-emerald-500 rounded-full animate-pulse"></span>
-                    All systems operational • 420 Doctors Online
+                    {{ $settings['doctors_online_text'] ?? 'All systems operational • 420 Doctors Online' }}
                 </span>
                 <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
-                    Your health ecosystem,<br><span class="text-blue-600">digitized and simplified.</span>
+                    {!! $settings['hero_title'] ?? 'Your health ecosystem,<br><span class="text-blue-600">digitized and simplified.</span>' !!}
                 </h1>
                 <p class="text-lg text-slate-500 max-w-xl">
-                    Access real-time health analytics, book virtual consultations instantly, and securely manage your
-                    medical history all from one centralized hub.
+                    {{ $settings['hero_subtitle'] ?? 'Access real-time health analytics, book virtual consultations instantly, and securely manage your medical history all from one centralized hub.' }}
                 </p>
                 <div class="flex flex-wrap gap-4">
                     <a href="#book"
@@ -37,32 +36,32 @@
                 <div class="flex justify-between items-start mb-6">
                     <div>
                         <p class="text-xs text-slate-400 uppercase tracking-wider">Active Health Plan</p>
-                        <h3 class="text-xl font-bold mt-0.5">Premium Family Care</h3>
+                        <h3 class="text-xl font-bold mt-0.5">{{ $settings['health_plan_title'] ?? 'Premium Family Care' }}</h3>
                     </div>
                     <span
                         class="bg-blue-500/20 text-blue-400 text-xs px-2.5 py-1 rounded-lg border border-blue-500/30 font-medium">ID:
-                        #MP-9842</span>
+                        {{ $settings['health_plan_id'] ?? '#MP-9842' }}</span>
                 </div>
 
                 <div class="space-y-4">
                     <div class="bg-white/5 rounded-2xl p-4 border border-white/10">
                         <div class="flex justify-between text-xs text-slate-400 mb-1">
                             <span>Deductible Progress</span>
-                            <span>$1,200 / $3,000</span>
+                            <span>{{ $settings['deductible_progress_text'] ?? '$1,200 / $3,000' }}</span>
                         </div>
                         <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
-                            <div class="bg-blue-500 h-full rounded-full" style="width: 40%"></div>
+                            <div class="bg-blue-500 h-full rounded-full" style="width: {{ $settings['deductible_progress_percentage'] ?? '40' }}%"></div>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-2 gap-3">
                         <div class="bg-white/5 p-3 rounded-xl border border-white/5 text-center">
                             <span class="text-xs text-slate-400 block">Next Refill</span>
-                            <span class="text-sm font-semibold text-emerald-400 mt-1 block">In 3 Days</span>
+                            <span class="text-sm font-semibold text-emerald-400 mt-1 block">{{ $settings['next_refill_text'] ?? 'In 3 Days' }}</span>
                         </div>
                         <div class="bg-white/5 p-3 rounded-xl border border-white/5 text-center">
                             <span class="text-xs text-slate-400 block">Pending Claims</span>
-                            <span class="text-sm font-semibold text-amber-400 mt-1 block">1 Active</span>
+                            <span class="text-sm font-semibold text-amber-400 mt-1 block">{{ $settings['pending_claims_text'] ?? '1 Active' }}</span>
                         </div>
                     </div>
                 </div>
@@ -145,22 +144,18 @@
             </div>
 
             <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-sm">
+                <!-- Tab 1: Primary Care / Diagnostics -->
                 <div x-show="activeTab === 'general'" class="grid md:grid-cols-2 gap-8 items-center">
                     <div class="space-y-4">
                         <div
                             class="h-12 w-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-xl font-bold">
                             01</div>
-                        <h3 class="text-xl font-bold text-slate-900">Comprehensive Primary Care</h3>
-                        <p class="text-slate-500 leading-relaxed text-sm">Your primary defense line for long-term health
-                            tracking. From routine physical examinations to personalized preventative medicine plans
-                            designed for your genetic profile.</p>
+                        <h3 class="text-xl font-bold text-slate-900">{{ $primaryCareService->title ?? 'Comprehensive Primary Care' }}</h3>
+                        <p class="text-slate-500 leading-relaxed text-sm">{{ $primaryCareService->description ?? 'Your primary defense line for long-term health tracking. From routine physical examinations to personalized preventative medicine plans designed for your genetic profile.' }}</p>
                         <ul class="space-y-2 text-sm text-slate-600">
-                            <li><i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i> Annual physical &
-                                biometric screenings</li>
-                            <li><i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i> Chronic disease
-                                self-management systems</li>
-                            <li><i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i> Immunization & predictive
-                                vaccine schedules</li>
+                            <li><i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i> Annual physical & biometric screenings</li>
+                            <li><i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i> SLA/Duration: {{ $primaryCareService->duration ?? 'Turnaround: 5-7 Business Days' }}</li>
+                            <li><i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i> Patient Co-pay: {{ $primaryCareService->co_pay_ratio ?? 10 }}%</li>
                         </ul>
                     </div>
                     <img class="rounded-2xl h-64 w-full object-cover shadow-md"
@@ -168,23 +163,19 @@
                         alt="Primary Care">
                 </div>
 
+                <!-- Tab 2: Cardiology -->
                 <div x-show="activeTab === 'cardio'" class="grid md:grid-cols-2 gap-8 items-center"
                     style="display: none;">
                     <div class="space-y-4">
                         <div
                             class="h-12 w-12 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center text-xl font-bold">
                             02</div>
-                        <h3 class="text-xl font-bold text-slate-900">Advanced Cardiovascular Analytics</h3>
-                        <p class="text-slate-500 leading-relaxed text-sm">Utilizing continuous automated monitoring
-                            streams and targeted non-invasive precision diagnostics to evaluate advanced myocardial
-                            functionalities.</p>
+                        <h3 class="text-xl font-bold text-slate-900">{{ $cardioService->title ?? 'Advanced Cardiovascular Analytics' }}</h3>
+                        <p class="text-slate-500 leading-relaxed text-sm">{{ $cardioService->description ?? 'Utilizing continuous automated monitoring streams and targeted non-invasive precision diagnostics to evaluate advanced myocardial functionalities.' }}</p>
                         <ul class="space-y-2 text-sm text-slate-600">
-                            <li><i class="fa-solid fa-circle-check text-rose-500 mr-2"></i> Remote Holter monitoring
-                                interpretation</li>
-                            <li><i class="fa-solid fa-circle-check text-rose-500 mr-2"></i> Echocardiography &
-                                multi-phase stress testing</li>
-                            <li><i class="fa-solid fa-circle-check text-rose-500 mr-2"></i> Cardiovascular vulnerability
-                                maps</li>
+                            <li><i class="fa-solid fa-circle-check text-rose-500 mr-2"></i> Remote Holter monitoring interpretation</li>
+                            <li><i class="fa-solid fa-circle-check text-rose-500 mr-2"></i> SLA/Duration: {{ $cardioService->duration ?? 'Duration: 45 Mins • In-Clinic Only' }}</li>
+                            <li><i class="fa-solid fa-circle-check text-rose-500 mr-2"></i> Patient Co-pay: {{ $cardioService->co_pay_ratio ?? 20 }}%</li>
                         </ul>
                     </div>
                     <img class="rounded-2xl h-64 w-full object-cover shadow-md"
@@ -192,23 +183,19 @@
                         alt="Cardiology">
                 </div>
 
+                <!-- Tab 3: Neurology -->
                 <div x-show="activeTab === 'neuro'" class="grid md:grid-cols-2 gap-8 items-center"
                     style="display: none;">
                     <div class="space-y-4">
                         <div
                             class="h-12 w-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-xl font-bold">
                             03</div>
-                        <h3 class="text-xl font-bold text-slate-900">Cognitive & Neural Sciences</h3>
-                        <p class="text-slate-500 leading-relaxed text-sm">Deciphering complex neurological pathways with
-                            neuro-imaging integrations, treating systemic neuropathies, and optimizing cognitive
-                            endurance matrixes.</p>
+                        <h3 class="text-xl font-bold text-slate-900">{{ $neuroService->title ?? 'Cognitive & Neural Sciences' }}</h3>
+                        <p class="text-slate-500 leading-relaxed text-sm">{{ $neuroService->description ?? 'Deciphering complex neurological pathways with neuro-imaging integrations, treating systemic neuropathies, and optimizing cognitive endurance matrixes.' }}</p>
                         <ul class="space-y-2 text-sm text-slate-600">
-                            <li><i class="fa-solid fa-circle-check text-indigo-500 mr-2"></i> Complex migraine profiling
-                                systems</li>
-                            <li><i class="fa-solid fa-circle-check text-indigo-500 mr-2"></i> Neuro-muscular mapping &
-                                electromyography</li>
-                            <li><i class="fa-solid fa-circle-check text-indigo-500 mr-2"></i> Cognitive decline
-                                mitigation training</li>
+                            <li><i class="fa-solid fa-circle-check text-indigo-500 mr-2"></i> Complex migraine profiling systems</li>
+                            <li><i class="fa-solid fa-circle-check text-indigo-500 mr-2"></i> SLA/Duration: {{ $neuroService->duration ?? 'Telehealth Review Available' }}</li>
+                            <li><i class="fa-solid fa-circle-check text-indigo-500 mr-2"></i> Patient Co-pay: {{ $neuroService->co_pay_ratio ?? 15 }}%</li>
                         </ul>
                     </div>
                     <img class="rounded-2xl h-64 w-full object-cover shadow-md"
@@ -227,55 +214,37 @@
                 </div>
 
                 <div class="grid sm:grid-cols-2 gap-4">
-                    <div
-                        class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-between hover:border-blue-500 transition-all cursor-pointer group">
-                        <div class="flex gap-4 items-start">
-                            <img class="h-14 w-14 rounded-xl object-cover"
-                                src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=150&q=80"
-                                alt="Doctor">
-                            <div>
-                                <h4 class="font-bold text-slate-900 group-hover:text-blue-600 transition">Dr. Marcus
-                                    Vance</h4>
-                                <span class="text-xs text-slate-400 font-medium block mb-1">Cardiologist • 12 Yrs
-                                    Exp</span>
-                                <div class="flex items-center gap-1 text-amber-500 text-xs">
-                                    <i class="fa-solid fa-star"></i> <span
-                                        class="font-semibold text-slate-700">4.9</span> <span
-                                        class="text-slate-400">(140 reviews)</span>
+                    @forelse($doctors as $doctor)
+                        <div
+                            class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-between hover:border-blue-500 transition-all cursor-pointer group">
+                            <div class="flex gap-4 items-start">
+                                @if($doctor->image_url)
+                                    <img class="h-14 w-14 rounded-xl object-cover"
+                                        src="{{ $doctor->image_url }}"
+                                        alt="{{ $doctor->name }}">
+                                @else
+                                    <div class="h-14 w-14 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center text-xl">
+                                        <i class="fa-solid fa-user-md"></i>
+                                    </div>
+                                @endif
+                                <div>
+                                    <h4 class="font-bold text-slate-900 group-hover:text-blue-600 transition">{{ $doctor->name }}</h4>
+                                    <span class="text-xs text-slate-400 font-medium block mb-1">{{ $doctor->role }} • {{ $doctor->department ?? 'General' }}</span>
+                                    <div class="flex items-center gap-1 text-amber-500 text-xs">
+                                        <i class="fa-solid fa-star"></i> <span
+                                            class="font-semibold text-slate-700">4.9</span> <span
+                                            class="text-slate-400">({{ $doctor->order_index * 34 + 88 }} reviews)</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs">
-                            <span class="text-slate-500"><i class="fa-solid fa-clock text-blue-500 mr-1"></i> Next:
-                                Today 4:15 PM</span>
-                            <span class="font-bold text-slate-900">$120/hr</span>
-                        </div>
-                    </div>
-
-                    <div
-                        class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-between hover:border-blue-500 transition-all cursor-pointer group">
-                        <div class="flex gap-4 items-start">
-                            <img class="h-14 w-14 rounded-xl object-cover"
-                                src="https://images.unsplash.com/photo-1594824813573-246434e33963?auto=format&fit=crop&w=150&q=80"
-                                alt="Doctor">
-                            <div>
-                                <h4 class="font-bold text-slate-900 group-hover:text-blue-600 transition">Dr. Sarah
-                                    Jenkins</h4>
-                                <span class="text-xs text-slate-400 font-medium block mb-1">Neurologist • 9 Yrs
-                                    Exp</span>
-                                <div class="flex items-center gap-1 text-amber-500 text-xs">
-                                    <i class="fa-solid fa-star"></i> <span
-                                        class="font-semibold text-slate-700">4.8</span> <span class="text-slate-400">(98
-                                        reviews)</span>
-                                </div>
+                            <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs">
+                                <span class="text-slate-500"><i class="fa-solid fa-clock text-blue-500 mr-1"></i> Next: Today</span>
+                                <span class="font-bold text-slate-900">${{ $doctor->order_index * 20 + 100 }}/hr</span>
                             </div>
                         </div>
-                        <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs">
-                            <span class="text-slate-500"><i class="fa-solid fa-clock text-blue-500 mr-1"></i> Next:
-                                Tomorrow 9:00 AM</span>
-                            <span class="font-bold text-slate-900">$140/hr</span>
-                        </div>
-                    </div>
+                    @empty
+                        <div class="col-span-2 text-center text-muted py-4">No specialists available.</div>
+                    @endforelse
                 </div>
             </div>
 

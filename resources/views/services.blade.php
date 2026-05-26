@@ -51,119 +51,35 @@
         </section>
 
         <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-            <div x-show="currentFilter === 'all' || currentFilter === 'diagnostics'"
-                class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-md hover:border-blue-500/30 transition flex flex-col justify-between group">
-                <div class="space-y-4">
-                    <div class="h-10 w-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-lg">
-                        <i class="fa-solid fa-dna"></i>
+            @forelse($services as $service)
+                @php
+                    $bgColor = 'bg-blue-50 text-blue-600';
+                    if ($service->category === 'cardiovascular') {
+                        $bgColor = 'bg-rose-50 text-rose-600';
+                    } elseif ($service->category === 'neurology') {
+                        $bgColor = 'bg-indigo-50 text-indigo-600';
+                    } elseif ($service->category === 'wellness') {
+                        $bgColor = 'bg-emerald-50 text-emerald-600';
+                    }
+                @endphp
+                <div x-show="currentFilter === 'all' || currentFilter === '{{ $service->category }}'"
+                    class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-md hover:border-blue-500/30 transition flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="h-10 w-10 {{ $bgColor }} rounded-xl flex items-center justify-center text-lg">
+                            <i class="{{ $service->icon }}"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition">{{ $service->title }}</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed">{{ $service->description }}</p>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition">High-Density
-                        Genomic Sequencing</h3>
-                    <p class="text-slate-500 text-xs leading-relaxed">Map raw genetic biomarkers to predict baseline
-                        health vulnerabilities, pharmacogenomic drug responses, and inherited oncology mutations.</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-medium">
-                    <span class="text-slate-400">Turnaround: 5-7 Business Days</span>
-                    <a href="{{ route('home') }}#book" class="text-blue-600 hover:underline">Order Kit <i
-                            class="fa-solid fa-arrow-right ml-1"></i></a>
-                </div>
-            </div>
-
-            <div x-show="currentFilter === 'all' || currentFilter === 'cardiovascular'"
-                class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-md hover:border-blue-500/30 transition flex flex-col justify-between group">
-                <div class="space-y-4">
-                    <div class="h-10 w-10 bg-rose-50 text-rose-600 rounded-xl flex items-center justify-center text-lg">
-                        <i class="fa-solid fa-wave-square"></i>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-medium">
+                        <span class="text-slate-400">{{ $service->duration ?? 'N/A' }}</span>
+                        <a href="{{ route('home') }}#book" class="text-blue-600 hover:underline">Schedule <i
+                                class="fa-solid fa-arrow-right ml-1"></i></a>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition">Multi-Phase
-                        Echocardiography</h3>
-                    <p class="text-slate-500 text-xs leading-relaxed">Advanced localized ultra-high frequency acoustic
-                        mapping used to reconstruct multi-chamber structural flow models of cardiac ventricles.</p>
                 </div>
-                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-medium">
-                    <span class="text-slate-400">Duration: 45 Mins • In-Clinic Only</span>
-                    <a href="{{ route('home') }}#book" class="text-blue-600 hover:underline">Schedule <i
-                            class="fa-solid fa-arrow-right ml-1"></i></a>
-                </div>
-            </div>
-
-            <div x-show="currentFilter === 'all' || currentFilter === 'neurology'"
-                class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-md hover:border-blue-500/30 transition flex flex-col justify-between group">
-                <div class="space-y-4">
-                    <div
-                        class="h-10 w-10 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center text-lg">
-                        <i class="fa-solid fa-diagram-project"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition">Quantitative EEG
-                        Neuro-mapping</h3>
-                    <p class="text-slate-500 text-xs leading-relaxed">Digital tracking arrays monitoring microvoltage
-                        cortical electrical dynamics to isolate focal vectors causing structural insomnia or persistent
-                        neural fatigue.</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-medium">
-                    <span class="text-slate-400">Telehealth Review Available</span>
-                    <a href="{{ route('home') }}#book" class="text-blue-600 hover:underline">Book Scan <i
-                            class="fa-solid fa-arrow-right ml-1"></i></a>
-                </div>
-            </div>
-
-            <div x-show="currentFilter === 'all' || currentFilter === 'wellness'"
-                class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-md hover:border-blue-500/30 transition flex flex-col justify-between group">
-                <div class="space-y-4">
-                    <div
-                        class="h-10 w-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-lg">
-                        <i class="fa-solid fa-apple-whole"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition">Precision
-                        Metabolic Modulation</h3>
-                    <p class="text-slate-500 text-xs leading-relaxed">Continuous cellular fuel monitoring optimization
-                        frameworks balancing glycemic variance arrays through deep nutrition tailoring.</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-medium">
-                    <span class="text-slate-400">Quarterly Tracking Plan</span>
-                    <a href="{{ route('home') }}#book" class="text-blue-600 hover:underline">Get Plan <i
-                            class="fa-solid fa-arrow-right ml-1"></i></a>
-                </div>
-            </div>
-
-            <div x-show="currentFilter === 'all' || currentFilter === 'diagnostics'"
-                class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-md hover:border-blue-500/30 transition flex flex-col justify-between group">
-                <div class="space-y-4">
-                    <div class="h-10 w-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-lg">
-                        <i class="fa-solid fa-droplet"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition">Advanced Lipid
-                        Subfractionation</h3>
-                    <p class="text-slate-500 text-xs leading-relaxed">Nuclear magnetic resonance panel measuring exact
-                        particle count concentration sizes rather than arbitrary traditional cholesterol aggregates.</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-medium">
-                    <span class="text-slate-400">Next-day Dashboard Sync</span>
-                    <a href="{{ route('home') }}#book" class="text-blue-600 hover:underline">Order Panel <i
-                            class="fa-solid fa-arrow-right ml-1"></i></a>
-                </div>
-            </div>
-
-            <div x-show="currentFilter === 'all' || currentFilter === 'wellness'"
-                class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-md hover:border-blue-500/30 transition flex flex-col justify-between group">
-                <div class="space-y-4">
-                    <div
-                        class="h-10 w-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-lg">
-                        <i class="fa-solid fa-shield-virus"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition">Adaptive
-                        Immunological Profiling</h3>
-                    <p class="text-slate-500 text-xs leading-relaxed">Comprehensive tracking mapping active/latent
-                        T-cell populations to catalog systematic resilience benchmarks against seasonal shifts.</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-medium">
-                    <span class="text-slate-400">Annual Checkup Standard</span>
-                    <a href="{{ route('home') }}#book" class="text-blue-600 hover:underline">Enroll Now <i
-                            class="fa-solid fa-arrow-right ml-1"></i></a>
-                </div>
-            </div>
-
+            @empty
+                <div class="col-span-3 text-center text-muted py-5">No services available.</div>
+            @endforelse
         </section>
 
         <section
@@ -178,8 +94,13 @@
                 </p>
             </div>
 
+            @php
+                $genomicPrice = $services->first(function($s) { return stripos($s->title, 'Genomic') !== false; })->price_estimate ?? 350;
+                $cardiacPrice = $services->first(function($s) { return stripos($s->title, 'Echocardiography') !== false; })->price_estimate ?? 220;
+                $lipidPrice = $services->first(function($s) { return stripos($s->title, 'Lipid') !== false; })->price_estimate ?? 85;
+            @endphp
             <div class="lg:col-span-2 bg-white/5 rounded-2xl p-6 border border-white/10"
-                x-data="{ genomic: false, cardiac: false, lipid: false, calculateTotal() { return (this.genomic ? 350 : 0) + (this.cardiac ? 220 : 0) + (this.lipid ? 85 : 0) } }">
+                x-data="{ genomic: false, cardiac: false, lipid: false, calculateTotal() { return (this.genomic ? {{ (int)$genomicPrice }} : 0) + (this.cardiac ? {{ (int)$cardiacPrice }} : 0) + (this.lipid ? {{ (int)$lipidPrice }} : 0) } }">
                 <div class="space-y-4">
                     <div class="grid sm:grid-cols-3 gap-3">
                         <div @click="genomic = !genomic"
@@ -190,7 +111,7 @@
                                 <input type="checkbox" x-model="genomic"
                                     class="rounded text-blue-600 focus:ring-0 bg-transparent border-white/20">
                             </div>
-                            <span class="text-sm font-bold text-white">$350</span>
+                            <span class="text-sm font-bold text-white">${{ (int)$genomicPrice }}</span>
                         </div>
 
                         <div @click="cardiac = !cardiac"
@@ -201,7 +122,7 @@
                                 <input type="checkbox" x-model="cardiac"
                                     class="rounded text-blue-600 focus:ring-0 bg-transparent border-white/20">
                             </div>
-                            <span class="text-sm font-bold text-white">$220</span>
+                            <span class="text-sm font-bold text-white">${{ (int)$cardiacPrice }}</span>
                         </div>
 
                         <div @click="lipid = !lipid"
@@ -212,7 +133,7 @@
                                 <input type="checkbox" x-model="lipid"
                                     class="rounded text-blue-600 focus:ring-0 bg-transparent border-white/20">
                             </div>
-                            <span class="text-sm font-bold text-white">$85</span>
+                            <span class="text-sm font-bold text-white">${{ (int)$lipidPrice }}</span>
                         </div>
                     </div>
 

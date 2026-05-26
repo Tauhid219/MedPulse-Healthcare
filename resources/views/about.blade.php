@@ -102,50 +102,38 @@
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Member 1 -->
-                <div
-                    class="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:border-blue-500/30 transition group">
-                    <img class="h-56 w-full object-cover grayscale group-hover:grayscale-0 transition duration-300"
-                        src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80"
-                        alt="Executive">
-                    <div class="p-5 space-y-1">
-                        <h4 class="font-bold text-slate-900">Dr. Elena Rostova, MD</h4>
-                        <span class="text-xs font-semibold text-blue-600 block">Chief Medical Officer</span>
-                        <p class="text-[11px] text-slate-400 pt-1 leading-relaxed">Former Director of Molecular
-                            Informatics at Johns Hopkins University. Over 15 years optimizing biometric clinical
-                            diagnostic paradigms.</p>
+                @forelse($teamMembers as $member)
+                    @php
+                        $roleColor = 'text-blue-600';
+                        if ($member->order_index === 2) {
+                            $roleColor = 'text-rose-500';
+                        } elseif ($member->order_index === 3) {
+                            $roleColor = 'text-indigo-500';
+                        }
+                    @endphp
+                    <div
+                        class="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:border-blue-500/30 transition group">
+                        @if($member->image_url)
+                            <img class="h-56 w-full object-cover grayscale group-hover:grayscale-0 transition duration-300"
+                                src="{{ $member->image_url }}"
+                                alt="{{ $member->name }}">
+                        @else
+                            <div class="h-56 w-full bg-slate-100 text-slate-400 flex items-center justify-center text-4xl">
+                                <i class="fa-solid fa-user-md"></i>
+                            </div>
+                        @endif
+                        <div class="p-5 space-y-1">
+                            <h4 class="font-bold text-slate-900">{{ $member->name }}</h4>
+                            <span class="text-xs font-semibold {{ $roleColor }} block">{{ $member->role }}</span>
+                            @if($member->department)
+                                <small class="text-slate-400 block font-medium">Department: {{ $member->department }}</small>
+                            @endif
+                            <p class="text-[11px] text-slate-400 pt-1 leading-relaxed">{{ $member->bio }}</p>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Member 2 -->
-                <div
-                    class="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:border-blue-500/30 transition group">
-                    <img class="h-56 w-full object-cover grayscale group-hover:grayscale-0 transition duration-300"
-                        src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=400&q=80"
-                        alt="Executive">
-                    <div class="p-5 space-y-1">
-                        <h4 class="font-bold text-slate-900">Marcus Vance, MD, FACC</h4>
-                        <span class="text-xs font-semibold text-rose-500 block">Head of Cardiovascular Innovation</span>
-                        <p class="text-[11px] text-slate-400 pt-1 leading-relaxed">Pioneered remote multi-phase
-                            myocardial telemetry models. Board-certified structural cardiologist specializing in
-                            non-invasive tracking protocols.</p>
-                    </div>
-                </div>
-
-                <!-- Member 3 -->
-                <div
-                    class="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:border-blue-500/30 transition group">
-                    <img class="h-56 w-full object-cover grayscale group-hover:grayscale-0 transition duration-300"
-                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80"
-                        alt="Executive">
-                    <div class="p-5 space-y-1">
-                        <h4 class="font-bold text-slate-900">Siddharth Mehta, PhD</h4>
-                        <span class="text-xs font-semibold text-indigo-500 block">VP of Network Infrastructures</span>
-                        <p class="text-[11px] text-slate-400 pt-1 leading-relaxed">Lead security engineer for medical
-                            cryptographic storage patterns. Focuses on maintaining SOC2 compliance and zero-knowledge
-                            database safety loops.</p>
-                    </div>
-                </div>
+                @empty
+                    <div class="col-span-3 text-center text-muted py-5">No team leadership profiles seeded.</div>
+                @endforelse
             </div>
         </section>
 
