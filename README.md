@@ -15,6 +15,9 @@ MedPulse Healthcare is a state-of-the-art, next-generation patient portal and ad
 
 ### 🛡️ AdminLTE Dashboard Panel
 - **Breeze Auth Integration:** Secure admin authentication restyled with clean AdminLTE-3.1.0 sign-in and recovery boxes.
+- **Administrative User CRUD:** Complete administrator account dashboard to view, create, edit, and delete administrative credentials. Includes a safety check preventing logged-in admins from deleting their own accounts.
+- **AdminLTE Profile Manager:** Converted Breeze's Tailwind-based profile manager to beautiful AdminLTE Bootstrap cards, enabling admins to modify their profiles (Name/Email), update passwords, and delete accounts (via secure modal prompt).
+- **Public Registration Disabled:** Registration routes are disabled to ensure all new admin accounts are exclusively created from within the dashboard.
 - **Summary Vitals Panel:** System-wide counters displaying total messages, active medical services, and doctor profiles.
 - **Department Triage Inbox:** Inbox reader showing message payloads, marking them as read, and deleting them.
 - **Services CRUD Manager:** Full administrative management to list, create, edit, or delete institutional services.
@@ -100,3 +103,4 @@ Explore detailed engineering plans and project updates in the `docs` folder:
 - 📖 [Implementation Plan](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/docs/implementation_plan.md)
 - 📝 [Development Diary](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/docs/development_diary.md)
 - 🧪 [Blade Templating Walkthrough](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/docs/walkthrough.md)
+- 🌐 [cPanel Hosting & Manual CI/CD Guide](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/docs/cpanel_deployment_guide.md)
