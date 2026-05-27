@@ -104,3 +104,5 @@ Explore detailed engineering plans and project updates in the `docs` folder:
 - 📝 [Development Diary](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/docs/development_diary.md)
 - 🧪 [Blade Templating Walkthrough](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/docs/walkthrough.md)
 - 🌐 [cPanel Hosting & Manual CI/CD Guide](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/docs/cpanel_deployment_guide.md)
+- 📑 [Project Overview & Summary (Bilingual)](file:///c:/xampp/htdocs/My%20Works/Infinity%20AI%20Buildfest%202026/MedPulse-Healthcare/docs/project_summary.md)
+
